@@ -1,0 +1,39 @@
+<ion-content text-center>
+<ion-grid class="custom-class">
+	<form [formGroup]="loginForm">
+		<ion-row justify-content-center >
+			<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+				<div text-center>
+					<h4>Login To Place Order</h4>
+				</div>
+				<div padding>
+					<ion-item >
+							<ion-label  position="floating">User Name</ion-label>
+						<ion-input type="text" required formControlName="userName" ></ion-input>
+					</ion-item>
+					<ion-row class="error-relative">
+					<ion-col *ngIf="!loginForm.controls.userName.valid  &&  submitAttemptLogin">
+						<p class="error-message" no-margin *ngIf="loginForm.value.userName.length > 0 ">Please Enter valid Email/Mobile Number.</p>
+						<p class="error-message" no-margin *ngIf="loginForm.value.userName.length == 0 ">Please Enter Email/Mobile Number.</p>
+					  </ion-col>
+				</ion-row>
+
+					<ion-item>
+							<ion-label position="floating">Password</ion-label>
+						<ion-input type="password" required formControlName="password" ></ion-input>
+					</ion-item>
+						<ion-row class="error-relative">
+					<ion-col no-margin *ngIf="!loginForm.controls.password.valid  &&  submitAttemptLogin">
+					  <p class="error-message" no-margin *ngIf="loginForm.value.password.length == 0">Please Enter Password.</p>
+					</ion-col>
+				</ion-row>   
+				</div>
+				<div padding text-center>
+					<ion-button (click)="onSubmit()" expand="block" color="tertiary">Login</ion-button>
+				</div>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-grid></ion-content>
+
+

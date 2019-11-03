@@ -1,0 +1,105 @@
+
+
+app-login {
+    
+}
+.custom-grid-class{
+    margin-top: 30px;
+    color: white;
+}
+ion-col{ ion-input{     
+    border: solid 2px #b9b0b0;
+    border-radius: 7px;
+    margin-top: 0px;
+ } 
+}
+.ionic-selectable{
+    border: solid 2px #b9b0b0;
+    border-radius: 7px;
+}
+ion-toolbar {
+    ion-title{
+        font-size: 10px;
+    }
+}
+ion-toolbar, ion-header {
+    --min-height: 30px;
+}
+ion-custom-title{
+    padding-left: 0px !important;
+    padding: inherit;
+}
+.header-class{
+    background-color: blue;
+    // border: 2px solid black;
+    // .item-native {
+    //      background-color: #bdb5b5;        
+    // }
+}
+.selected-items{
+    background-color: red;
+}
+
+/* Larger than a phone */
+@media (min-width: 567px) {
+    .form-mobile-responsive{
+        display: none;
+    }
+    .form-notmobile-responsive{
+        display: block;
+    }
+}
+
+/* Small devices such as phone */
+@media (max-width: 567px) {
+    .form-notmobile-responsive{
+        display: none;
+    }
+    .form-mobile-responsive{
+        display: block;
+    }
+}
+// ion-col{
+//     ion-input{
+//         border: solid 1px black;
+//         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.37);
+//         background-color: #f9f0f0;
+//         border-bottom: none;
+//         border-radius: 4px;
+//     }
+//  }
+ 
+
+// $white-color: #fff;
+// $height100: 100%;
+
+// ion-grid {
+//     width:100%;
+//     height: $height100;
+//     background: #dfdfdf;
+// }
+
+// ion-row {
+//     height: $height100;
+// }
+
+// ion-col {
+//     border: 1px solid #488aff;
+//     background: $white-color;
+// }
+
+// ion-button {
+//     font-weight: 300;
+// }
+
+// @media (min-width: 240px) and (max-width: 768px) {
+//     ion-grid {
+//         background: $white-color;
+//     }
+//     ion-col {
+//         border: none;
+//     }
+// }
+.custom-label{
+    padding-top: 15px;
+}

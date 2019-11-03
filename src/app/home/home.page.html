@@ -1,0 +1,237 @@
+<ion-header translucent>
+		<ion-toolbar color="dark" text-left>
+		  <ion-title class="ion-text-start ion-custom-title">steward: na5,Kot No: 211</ion-title>
+		</ion-toolbar>
+</ion-header>
+<ion-content padding>
+	<form [formGroup]="orderForm"  class="form-mobile-responsive">
+		<ion-grid>
+			<ion-row text-center> 
+				<ion-col class="custom-label" size="2">
+						TbNo
+				</ion-col>
+				<ion-col size="4">
+					<ionic-selectable
+						formControlName="tableNumber"
+						[items]="tableNumberList"
+						itemValueField="id"
+						itemTextField="name"
+						placeholder = "Select Table No"
+						[canSearch]="true"
+						(onChange)="portChange($event,'tableNumber')"></ionic-selectable>
+				</ion-col>
+				<ion-col class="custom-label" size="2">
+						Code
+				</ion-col>
+				<ion-col size="4">
+				<ionic-selectable [isEnabled]="!isUpDate"	formControlName="itemCode"	
+						[items]="itemsCodeList"
+						itemValueField="id"
+						itemTextField="name"
+						placeholder = "Select Item Code"
+						[canSearch]="true"
+						(onChange)="portChange($event,'itemCode')"></ionic-selectable>
+				</ion-col>
+			</ion-row>
+			<ion-row text-center>
+				<ion-col class="custom-label" size="2">
+						Qty
+				</ion-col>
+				<ion-col size="4">
+						<ion-item lines="none">
+							<ion-input formControlName="quantity" 
+								type="text" required></ion-input>
+						</ion-item>
+				</ion-col>
+				<ion-col class="custom-label" size="2">
+						Narr
+				</ion-col>
+			 	<ion-col size="4">
+						<ion-item lines="none">
+							<ion-input [readonly]="isUpDate" formControlName="narr" 
+								type="text" ></ion-input>
+						</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row text-center>
+				<ion-col class="custom-label" size="2">
+						Item Name
+				</ion-col>
+				<ion-col size="10">
+					<ionic-selectable  [isEnabled]="!isUpDate"
+					 formControlName="itemName" disabled="true"
+						[items]="itemsNameList"
+						itemValueField="id"
+						placeholder = "Select Item"
+						itemTextField="name"
+						[canSearch]="true"
+						(onChange)="portChange($event,'itemName')"></ionic-selectable>
+				</ion-col>
+			</ion-row>
+			<ion-row text-center>
+				<!-- <ion-col size="2" >
+					<ion-button class="item-text-wrap"(click)="show()" >Show
+					</ion-button>
+				</ion-col> -->
+				<ion-col size="3">
+					<ion-button [disabled]="isUpDate" (click)="add()" color="success">Add
+					</ion-button>
+				</ion-col>
+				<ion-col size="3">
+					<ion-button [disabled]="!isUpDate" (click)="update()" color="primary">Upd
+					</ion-button>
+				</ion-col>
+				<ion-col size="3">
+					<ion-button [disabled]="!isUpDate" (click)="delete()" color="danger">Del
+					</ion-button>
+				</ion-col>
+				<ion-col size="3">
+					<ion-button type="reset" (click)="clear()" color="warning">Clear
+					</ion-button>
+				</ion-col>
+				<!-- <ion-col size="2">
+						<ion-button (click)="exit()" >Exit
+						</ion-button>
+				</ion-col> -->
+			</ion-row>
+		</ion-grid>
+	</form>
+
+	<!-- <ng-template #notMobile> -->
+			<form [formGroup]="orderForm" class="form-notmobile-responsive">
+					<ion-grid>
+						<ion-row text-center> 
+							<ion-col class="custom-label" size="1">
+									Tb No
+							</ion-col>
+							<ion-col size="2">
+								<ionic-selectable
+						formControlName="tableNumber"
+						[items]="tableNumberList"
+						itemValueField="id"
+						itemTextField="name"
+						placeholder = "Select Table No"
+						[canSearch]="true"
+						(onChange)="portChange($event,'tableNumber')"></ionic-selectable>
+							</ion-col>
+							<ion-col class="custom-label" size="1">
+								Code
+							</ion-col>
+							<ion-col size="2">
+								<ionic-selectable [isEnabled]="!isUpDate"	formControlName="itemCode"	
+						[items]="itemsCodeList"
+						itemValueField="id"
+						itemTextField="name"
+						placeholder = "Select Item Code"
+						[canSearch]="true"
+						(onChange)="portChange($event,'itemCode')"></ionic-selectable>
+							</ion-col>
+							<ion-col class="custom-label" size="1">
+									Qty
+							</ion-col>
+							<ion-col size="2">
+								<ion-item lines="none">
+									<ion-input formControlName="quantity" 
+										type="text" required></ion-input>
+								</ion-item>
+							</ion-col>
+							<ion-col class="custom-label" size="1">
+									Narr
+							</ion-col>
+							<ion-col size="2">
+								<ion-item lines="none">
+									<ion-input [disabled]="isUpDate" formControlName="narr" 
+										type="text" ></ion-input>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+						<ion-row text-center>
+							<ion-col class="custom-label" size="2">Item Name
+							</ion-col>
+							<ion-col size="10">
+									<ionic-selectable  [isEnabled]="!isUpDate"
+									formControlName="itemName" disabled="true"
+									   [items]="itemsNameList"
+									   itemValueField="id"
+									   placeholder = "Select Item"
+									   itemTextField="name"
+									   [canSearch]="true"
+									   (onChange)="portChange($event,'itemName')"></ionic-selectable>
+							</ion-col>
+						</ion-row>
+						<ion-row text-center>
+							<!-- <ion-col size="2" >
+								<ion-button class="item-text-wrap"(click)="show()" >Show
+								</ion-button>
+							</ion-col> -->
+							<ion-col size="3">
+								<ion-button [disabled]="isUpDate" (click)="add()" color="success">Add
+								</ion-button>
+							</ion-col>
+							<ion-col size="3">
+								<ion-button [disabled]="!isUpDate" (click)="update()" color="primary">Upd
+								</ion-button>
+							</ion-col>
+							<ion-col size="3">
+								<ion-button [disabled]="!isUpDate" (click)="delete()" color="danger">Del
+								</ion-button>
+							</ion-col>
+							<ion-col size="3">
+								<ion-button type="reset" (click)="clear()" color="warning">Clear
+								</ion-button>
+							</ion-col>
+							<!-- <ion-col size="2">
+									<ion-button (click)="exit()" >Exit
+									</ion-button>
+							</ion-col> -->
+						</ion-row>
+					</ion-grid>
+				</form>
+	<!-- </ng-template> -->
+
+
+
+
+
+
+	<ion-grid *ngIf="ordersData[orderForm.value?.tableNumber?.id] && ordersData[orderForm.value?.tableNumber?.id]?.length" class="custom-grid-class">
+			<ion-row  class="header-class">
+					<ion-col size="5">
+							<strong>Item</strong>
+					</ion-col>
+					<ion-col size="2">
+							<strong>Qty</strong>
+					</ion-col>
+					<ion-col size="3">
+						<strong>Rate</strong>
+					</ion-col>
+					<ion-col size="2">
+						<strong>Narr</strong>
+					</ion-col>
+			</ion-row>
+
+			<ion-row class="ion-activatable" (click)="onClickItem(order.tableNumber?.id,i)" *ngFor="let order of ordersData[orderForm.value?.tableNumber?.id];let i =index" class="selected-items" style="border-bottom: groove;" >
+					<ion-ripple-effect></ion-ripple-effect>
+
+					<ion-col size="5">
+						{{getLabelById('itemsNameList',order.itemName.id)}}
+					</ion-col>
+					<ion-col size="2">
+							{{order.quantity}}
+					</ion-col>
+					<ion-col size="3">
+						{{getelectedItemPrice(order.itemName.id)}}
+					</ion-col>
+					<ion-col size="2">
+					
+					</ion-col>
+			</ion-row>
+		  </ion-grid>
+</ion-content>
+<ion-footer>
+	<ion-toolbar *ngIf="selectedItems?.length" text-center>
+		<ion-button slot="start"  text-center expand="block" color="light">
+			Amount: {{getTotalAmount()}}</ion-button>
+			<ion-button color="success" fill="outline" text-center expand="block" (click)="saveOrder()" color="success">Save<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+	</ion-toolbar>
+</ion-footer>

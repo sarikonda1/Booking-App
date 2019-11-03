@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar text-center>
+    <ion-title>Select Area</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-top>
+  <ion-row text-center>
+    <ion-col>
+    <div padding>
+        <ion-button (click)="onAreaSelect()" color="medium">Normal</ion-button>
+      </div>
+      <div padding>
+          <ion-button (click)="onAreaSelect(false)" color="secondary">Deluxe</ion-button>
+        </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
